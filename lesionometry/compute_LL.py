@@ -14,6 +14,7 @@ import argparse
 import numpy as np
 import nibabel as nib
 import pandas as pd
+from lesionometry.utils import calculate_load, save_load
 
 def _build_argparser():
     p = argparse.ArgumentParser(
@@ -25,39 +26,14 @@ def _build_argparser():
     p.add_argument('-s', action='store', metavar='subject', dest='subject',
                    help='Subject ID', required='True')
     p.add_argument('-o', metavar='savename', dest='savename', type=str,
-                   help='Output name', required='True')
+                   help='Output directory', required='True')
     
     return p
-
-def calculate_ratio(numerator, denumerator):
-    """
-    Calculates the ratio a/b
-
-    Parameters
-    ----------
-    numerator : float
-        The lesioned portion
-        
-    denumerator : float
-        The entire brain or bundle of interest
-
-    Returns
-    -------
-    load : float 
-        The calculated lesion load ratio (as a percentage)
-
-    Examples
-    --------
-    >>> calculate_ratio(5,500)
-    1.0
-    """
-    LL = np.round(numerator/denumerator * 100, 3)
-    return LL
 
 def main():
     parser = _build_argparser()
     args = parser.parse_args()
-
+    
     # Load lesions image
     lesions_path = args.lesions
     img_les = nib.load(lesions_path)
@@ -73,17 +49,13 @@ def main():
     BrainNo = np.count_nonzero(data_brain)
     
     #Simple lesion load
-    LL = calculate_ratio(LesionNo, BrainNo)
+    LL = calculate_load(LesionNo, BrainNo)
     
     #Export to .csv
-    filename = args.savename
     subj = [args.subject]
-    LesionLoad = [LL]
-    dict = {'Subject': subj, 'LesionLoad': LesionLoad}  
+    load = [LL]
+    output_dir = args.savename
+    save_load(output_dir, subj, load, 'LesionLoad')
     
-    df = pd.DataFrame(dict)
-    df.to_csv(filename + '.csv',index=False, header=False, mode='a')
-
-
 if __name__ == "__main__":
     main()
