@@ -9,6 +9,7 @@ Compute tractogram load as the ratio of lesioned streamlines over whole tractogr
 from __future__ import division, print_function, absolute_import
 import os
 import argparse
+from os.path import join
 
 import numpy as np
 import nibabel as nib
@@ -48,18 +49,21 @@ def main():
     os.system("export PATH=/code/mrtrix3/bin:$PATH")
     input_dir = os.path.dirname(tracts)
     input_file_without_ending = os.path.basename(tracts).split(".")[0]
-    os.system("tckedit " + tracts + " -include " + lesions + " " + output_dir+"/"+input_file_without_ending+".tck" + " -force")
+    os.system("tckedit " + tracts + " -include " + lesions_path + " " + output_dir+"/"+input_file_without_ending+"_lesioned.tck" + " -force")
     
     #Tckmap whole brain and intersected
-    os.system("tckmap " + tractogram + " " + join(input_dir, input_file_without_ending)+".nii.gz " + "-template " + lesions_path + " -force")
+    lesioned_tractogram = join(input_dir, input_file_without_ending)+".nii.gz"
+    os.system("tckmap " + tracts + " " + output_dir+"/"+input_file_without_ending+".nii.gz" + " -template " + lesions_path + " -force")
+    os.system("tckmap " + output_dir+"/"+input_file_without_ending+"_lesioned.tck" + " " + output_dir+"/"+input_file_without_ending+"_lesioned.nii.gz" 
+    + " -template " + lesions_path + " -force")
     
     
     #Compute load
-    img_les_tractogram = nib.load(lesioned_tractogram)
-    data_les_tractogram = img_les_tractogram.get_fdata()
-    
-    img_tractogram = nib.load(tractogram)
+    img_tractogram = nib.load(lesioned_tractogram)
     data_tractogram = img_tractogram.get_fdata()
+    
+    img_les_tractogram = nib.load(output_dir+"/"+input_file_without_ending+"_lesioned.nii.gz")
+    data_les_tractogram = img_les_tractogram.get_fdata()
     
     #non zero values
     LesionNo = np.count_nonzero(data_les_tractogram)
