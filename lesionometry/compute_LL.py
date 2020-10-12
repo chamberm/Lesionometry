@@ -49,7 +49,7 @@ def calculate_ratio(numerator, denumerator):
     Examples
     --------
     >>> calculate_ratio(5,500)
-    1
+    1.0
     """
     LL = np.round(numerator/denumerator * 100, 3)
     return LL

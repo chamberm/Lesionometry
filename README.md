@@ -15,5 +15,5 @@ J.-D. Tournier, R. E. Smith, D. Raffelt, R. Tabbara, T. Dhollander, M. Pietsch, 
 # Usage
 ```
 git clone https://github.com/chamberm/Lesionometry
-pip install -e Lesionometry
+python setup.py install
 ```
