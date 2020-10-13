@@ -19,10 +19,30 @@ NeuroImage, 202 (2019), pp. 116–37.
 ```
 git clone https://github.com/chamberm/Lesionometry
 python setup.py install
+or
+pip install -e .
 ```
 
 # Usage
+### Calculate Lesion Load
+```
+compute_LL.py lesions.nii.gz brain.nii.gz -s SubjectID -o OutputDirectory
+```
 
+### Calculate Tractogram Load
+```
+compute_TL.py lesions.nii.gz tractogram.tck -s SubjectID -o OutputDirectory
+```
+
+### Calculate Bundle Load
+```
+compute_BL.py lesions.nii.gz bundle.tck -s SubjectID -o OutputDirectory
+```
+
+### Calculate lesionometry
+```
+compute_BL.py FA.nii.gz bundle.tck -s SubjectID -o OutputDirectory
+```
 
 # Author
 Maxime Chamberland [Website](https://chamberm.github.io/)

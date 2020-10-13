@@ -21,7 +21,7 @@ def calculate_load(numerator, denumerator):
 
     Examples
     --------
-    >>> calculate_ratio(5,500)
+    >>> calculate_load(5,500)
     1.0
     """
     load = np.round(numerator/denumerator * 100, 3)
