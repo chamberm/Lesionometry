@@ -60,7 +60,7 @@ def main():
     
     #Compute load
     img_fiber = nib.load(fiber)
-    data_fiber = imgfiber.get_fdata()
+    data_fiber = img_fiber.get_fdata()
     
     img_les_fiber = nib.load(output_dir+"/"+input_file_without_ending+"_lesioned.nii.gz")
     data_les_fiber = img_les_fiber.get_fdata()
