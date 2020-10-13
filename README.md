@@ -9,7 +9,7 @@ International workshop on Computational Diffusion MRI (cdMRI), MICCAI 2020.
 ```
 
 # Install
-This package requires [Mrtrix 3](http://mrtrix.readthedocs.io/en/latest/installation/linux_install.html)
+This package requires [Mrtrix 3](http://mrtrix.readthedocs.io/en/latest/installation/linux_install.html).
 ```
 J.-D. Tournier, R. E. Smith, D. Raffelt, R. Tabbara, T. Dhollander, M. Pietsch, D. Christiaens, B. Jeurissen, C.-H. Yeh, and A. Connelly. 
 MRtrix3: A fast, flexible and open software framework for medical image processing and visualisation. 
@@ -41,7 +41,7 @@ compute_BL.py lesions.nii.gz bundle.tck -s SubjectID -o OutputDirectory
 
 ### Calculate lesionometry
 ```
-compute_BL.py FA.nii.gz bundle.tck -s SubjectID -o OutputDirectory
+compute_lesionometry.py FA.nii.gz bundle.tck -s SubjectID -o OutputDirectory
 ```
 
 # Author

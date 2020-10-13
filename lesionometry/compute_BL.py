@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Compute tractogram load as the ratio of lesioned streamlines over whole tractogram.
+Compute bundle load as the ratio of lesioned streamlines over entire bundle.
 
 """
 
@@ -21,8 +21,8 @@ def _build_argparser():
         description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     p.add_argument('lesions', action='store', metavar='lesions',
                    help='Binary mask of the lesions.')
-    p.add_argument('tractogram', action='store', metavar='tractogram',
-                   help='Whole brain tractogram (.tck file)')
+    p.add_argument('bundle', action='store', metavar='bundle',
+                   help='Fiber bundle (.tck file)')
     p.add_argument('-s', action='store', metavar='subject', dest='subject',
                    help='Subject ID', required='True')
     p.add_argument('-o', metavar='savename', dest='savename', type=str,
@@ -43,7 +43,7 @@ def main():
     img_les = nib.load(lesions_path)
     data_les = img_les.get_fdata()
     
-    tracts = args.tractogram
+    tracts = args.bundle
     
     #Intersect streamlines with lesion
     os.system("export PATH=/code/mrtrix3/bin:$PATH")
@@ -53,29 +53,29 @@ def main():
     os.system("tckedit " + tracts + " -include " + lesions_path + " " + output_dir+"/"+input_file_without_ending+"_lesioned.tck" + " -force")
     
     #Tckmap whole brain and intersected
-    tractogram = join(output_dir, input_file_without_ending)+".nii.gz"
+    fiber = join(output_dir, input_file_without_ending)+".nii.gz"
     os.system("tckmap " + tracts + " " + output_dir+"/"+input_file_without_ending+".nii.gz" + " -template " + lesions_path + " -force")
     os.system("tckmap " + output_dir+"/"+input_file_without_ending+"_lesioned.tck" + " " + output_dir+"/"+input_file_without_ending+"_lesioned.nii.gz" 
     + " -template " + lesions_path + " -force")
     
     #Compute load
-    img_tractogram = nib.load(tractogram)
-    data_tractogram = img_tractogram.get_fdata()
+    img_fiber = nib.load(fiber)
+    data_fiber = imgfiber.get_fdata()
     
-    img_les_tractogram = nib.load(output_dir+"/"+input_file_without_ending+"_lesioned.nii.gz")
-    data_les_tractogram = img_les_tractogram.get_fdata()
+    img_les_fiber = nib.load(output_dir+"/"+input_file_without_ending+"_lesioned.nii.gz")
+    data_les_fiber = img_les_fiber.get_fdata()
     
     #non zero values
-    LesionNo = np.count_nonzero(data_les_tractogram)
-    TractogramNo = np.count_nonzero(data_tractogram)
-    TL = calculate_load(LesionNo, TractogramNo)
+    LesionNo = np.count_nonzero(data_les_fiber)
+    fiberNo = np.count_nonzero(data_fiber)
+    BL = calculate_load(LesionNo, fiberNo)
     
     #Save
     filename = args.savename
     subj = [args.subject]
-    load = [TL]
+    load = [BL]
     
-    save_load(output_dir, subj, load, 'TractogramLoad')
+    save_load(output_dir, subj, load, 'BundleLoad')
 
 if __name__ == "__main__":
     main()
