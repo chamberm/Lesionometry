@@ -1,7 +1,7 @@
 ![Lesionometry](https://github.com/chamberm/Lesionometry/blob/main/ressources/banner.png)
 [![Build Status](https://github.com/chamberm/Lesionometry/workflows/Python%20package/badge.svg)](https://github.com/chamberm/Lesionometry/actions)
 # Lesionometry
-Simple Tractometry-based metrics for characterizing white matter lesions within fibre pathways. This repository contains the scripts used in [Chamberland et al. 2020](https://www.researchgate.net/publication/344378484_Beyond_lesion-load_Tractometry-based_metrics_for_characterizing_white_matter_lesions_within_fibre_pathways). If using, please cite the following:
+Simple Tractometry-based metrics for characterizing white matter lesions within fibre pathways. This repository contains the scripts used in [Chamberland et al. 2020](https://www.researchgate.net/publication/344378484_Beyond_lesion-load_Tractometry-based_metrics_for_characterizing_white_matter_lesions_within_fibre_pathways). If using, please cite the following paper:
 ```
 Chamberland, M., Winter, M., Brice, T. A., Jones, D. K., & Tallantyre, E. C. 
 Beyond lesion-load: Tractometry-based metrics for characterizing white matter lesions within fibre pathways. 
