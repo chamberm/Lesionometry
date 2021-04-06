@@ -3,7 +3,9 @@
 # Lesionometry
 Simple Tractometry-based metrics for characterizing white matter lesions within fibre pathways. This repository contains the scripts used in [Chamberland et al. 2020](https://academic.oup.com/braincomms/advance-article/doi/10.1093/braincomms/fcab065/6207986). If using, please cite the following paper:
 ```
-Mia Winter, Emma C Tallantyre, Thomas AW Brice, Neil P Robertson, Derek K Jones, Maxime Chamberland, Tract-specific MRI measures explain learning and recall differences in multiple sclerosis, Brain Communications, 2021;, fcab065, https://doi.org/10.1093/braincomms/fcab065
+Mia Winter, Emma C Tallantyre, Thomas AW Brice, Neil P Robertson, Derek K Jones, and Maxime Chamberland. 
+Tract-specific MRI measures explain learning and recall differences in multiple sclerosis.
+Brain Communications, 2021;, fcab065, https://doi.org/10.1093/braincomms/fcab065
 ```
 
 # Install
