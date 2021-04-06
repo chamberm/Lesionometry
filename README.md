@@ -1,11 +1,9 @@
 ![Lesionometry](https://github.com/chamberm/Lesionometry/blob/main/ressources/banner.png)
 [![Build Status](https://github.com/chamberm/Lesionometry/workflows/Python%20package/badge.svg)](https://github.com/chamberm/Lesionometry/actions)
 # Lesionometry
-Simple Tractometry-based metrics for characterizing white matter lesions within fibre pathways. This repository contains the scripts used in [Chamberland et al. 2020](https://www.researchgate.net/publication/344378484_Beyond_lesion-load_Tractometry-based_metrics_for_characterizing_white_matter_lesions_within_fibre_pathways). If using, please cite the following paper:
+Simple Tractometry-based metrics for characterizing white matter lesions within fibre pathways. This repository contains the scripts used in [Chamberland et al. 2020](https://academic.oup.com/braincomms/advance-article/doi/10.1093/braincomms/fcab065/6207986). If using, please cite the following paper:
 ```
-Chamberland, M., Winter, M., Brice, T. A., Jones, D. K., & Tallantyre, E. C. 
-Beyond lesion-load: Tractometry-based metrics for characterizing white matter lesions within fibre pathways. 
-International workshop on Computational Diffusion MRI (cdMRI), MICCAI 2020.
+Mia Winter, Emma C Tallantyre, Thomas AW Brice, Neil P Robertson, Derek K Jones, Maxime Chamberland, Tract-specific MRI measures explain learning and recall differences in multiple sclerosis, Brain Communications, 2021;, fcab065, https://doi.org/10.1093/braincomms/fcab065
 ```
 
 # Install
